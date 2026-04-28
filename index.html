@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Канбан-дошка | Лабораторна робота №6</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1><i class="fas fa-columns"></i> Канбан-дошка</h1>
+            <p class="subtitle">Управління задачами з drag-and-drop | Збереження в localStorage</p>
+        </header>
+
+        <div class="add-task-section">
+            <input type="text" id="taskInput" placeholder="Назва нової задачі..." autocomplete="off">
+            <select id="columnSelect">
+                <option value="todo">До виконання</option>
+                <option value="inprogress">В процесі</option>
+                <option value="done">Виконано</option>
+            </select>
+            <button id="addTaskBtn"><i class="fas fa-plus-circle"></i> Додати задачу</button>
+        </div>
+
+        <div class="kanban-board" id="kanbanBoard">
+            <div class="column" data-column="todo">
+                <div class="column-header">
+                    <h2><i class="fas fa-tasks"></i> До виконання</h2>
+                    <span class="task-count" id="todoCount">0</span>
+                </div>
+                <div class="task-list" id="todoList" data-status="todo"></div>
+            </div>
+
+            <div class="column" data-column="inprogress">
+                <div class="column-header">
+                    <h2><i class="fas fa-spinner"></i> В процесі</h2>
+                    <span class="task-count" id="inprogressCount">0</span>
+                </div>
+                <div class="task-list" id="inprogressList" data-status="inprogress"></div>
+            </div>
+
+            <div class="column" data-column="done">
+                <div class="column-header">
+                    <h2><i class="fas fa-check-circle"></i> Виконано</h2>
+                    <span class="task-count" id="doneCount">0</span>
+                </div>
+                <div class="task-list" id="doneList" data-status="done"></div>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <div class="stats">
+                <span><i class="fas fa-chart-simple"></i> Всього задач: <strong id="totalTasks">0</strong></span>
+                <span><i class="fas fa-check-circle"></i> Виконано: <strong id="completedTasks">0</strong></span>
+                <span><i class="fas fa-chart-line"></i> Прогрес: <strong id="progressPercent">0</strong>%</span>
+            </div>
+            <div class="actions">
+                <button id="clearStorageBtn" class="btn-danger"><i class="fas fa-trash-alt"></i> Очистити всі задачі</button>
+                <button id="saveToFileBtn" class="btn-secondary"><i class="fas fa-download"></i> Експортувати дані (JSON)</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
